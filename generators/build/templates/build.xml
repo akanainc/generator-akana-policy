@@ -4,7 +4,9 @@
 	
 	<property name="config.dir" value="../META-INF/config"/>
 	<property name="spring.dir" value="../META-INF/spring"/>
-	
+	<property name="schema.dir" value="../META-INF/resources" />
+	<property name="binding.dir" value="./" />
+	<property name="target.dir" value="./generated" />
 	<property name="bundle.file" value="${deploy.dir}/<%= props.namespace %>_${major.version}.${minor.version}.jar"/>
 	
 	<fileset id="dependent.jars" dir="${lib.dir}">
@@ -20,10 +22,12 @@
     <target name="clean" description="Clean build artifacts" depends="init">
         <delete dir="${classes.dir}"/>
         <delete file="${bundle.file}"/>
+        <delete dir="${target.dir}"/>
     </target>
 
     <target name="init">
         <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${target.dir}"/>
     </target>
 
 	<target name="compile" depends="init">

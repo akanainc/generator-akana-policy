@@ -16,11 +16,20 @@
   							http://www.springframework.org/schema/osgi
   							http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 	
-	<osgi:service interface="com.soa.message.handler.HandlerFactory">
+	<!-- Publishes the WS-Policy handler to the policy framework. The properties that should be included are
+		name: Unique name of the handler factory
+		scope: "abstract" (normalized messages for all services) or "concrete" (only a specific binding like SOAP)
+		binding: used if scope is "concrete" to identify the binding type to apply to, i.e., "soap", "http", "pox"
+		role: "consumer" (outgoing calls to downstream service) or "provider" (incoming calls to virtual service)
+	-->
+
+	<osgi:service ref="<%= props.namespace %>.handler.factory" interface="com.soa.policy.wspolicy.handler.WSPHandlerFactory">
 		<osgi:service-properties>
-			<entry key="name" value="<%= props.namespace %>"/>
-			<entry key="scope" value="all"/>
+			<entry key="name" value="<%= props.namespace %>.handler.factory"/>
+			<entry key="scope" value="abstract"/>
 			<entry key="role" value="provider"/>
+			<!--entry key="binding" value="http"/-->
+			<!-- entry key="after" value="*"/-->   
 		</osgi:service-properties>
 		<bean class="<%= props.packageHandler %>.<%= props.component %>MessageHandlerFactory"/>
 	</osgi:service>	
