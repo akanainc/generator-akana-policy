@@ -1,4 +1,4 @@
-# generator-yo-policy [![Build Status](https://secure.travis-ci.org/funnyenough/generator-yo-policy.png?branch=master)](https://travis-ci.org/funnyenough/generator-yo-policy)
+# generator-akana-policy [![Build Status](https://secure.travis-ci.org/funnyenough/generator-akana-policy.png?branch=master)](https://travis-ci.org/funnyenough/generator-akana-policy)
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -23,10 +23,10 @@ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-yo-policy from npm, run:
+To install generator-akana-policy from npm, run:
 
 ```bash
-npm install -g generator-yo-policy
+npm install -g generator-akana-policy
 ```
 
 Finally, initiate the generator:
