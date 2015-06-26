@@ -10,7 +10,7 @@
 	<property name="bundle.file" value="${deploy.dir}/<%= props.namespace %>_${major.version}.${minor.version}.jar"/>
 	
 	<fileset id="dependent.jars" dir="${lib.dir}">
-		<include name="*.jar"/>
+		<include name="**/*.jar"/>
 	</fileset>
 	
 	<path id="base.classpath">
@@ -32,7 +32,7 @@
 
 	<target name="compile" depends="init">
 		<echo>Compiling <%= props.namespace %></echo>
-  		<javac destdir="${classes.dir}" debug="${javacdebug}" debuglevel="${debuglevel}" nowarn="${nowarn}" target="1.5">
+  		<javac destdir="${classes.dir}" debug="${javacdebug}" debuglevel="${debuglevel}" nowarn="${nowarn}" target="1.7">
   			<src path="${src.dir}"/>
   			<include name="**/*.java"/>
   			<classpath>
