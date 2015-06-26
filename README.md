@@ -32,7 +32,7 @@ npm install -g generator-akana-policy
 Finally, initiate the generator:
 
 ```bash
-yo yo policy
+yo akana-policy
 ```
 
 ### Getting To Know Yeoman
