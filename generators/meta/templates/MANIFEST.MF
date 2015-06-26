@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: <%= props.title %>
+Bundle-SymbolicName: <%= props.namespace %>
+Bundle-Version: 8.0.0
+Bundle-Vendor: Akana Inc.  (<%= props.author %> - <%= props.email %>)
+Import-Package: com.digev.fw.exception;version="6.0.0",
+ com.digev.fw.log;version="6.0.0",
+ com.soa.fw.transform;version="6.0.0",
+ com.soa.message;version="6.0.0",
+ com.soa.message.handler;version="6.0.0",
+ javax.xml.transform,
+ javax.xml.transform.stream

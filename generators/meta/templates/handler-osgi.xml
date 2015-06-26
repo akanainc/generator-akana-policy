@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+  
+  Copyright (C) <%= new Date().getFullYear() %> Akana Inc.
+
+  Author: <%= props.author %> (<%= props.email %>)
+
+  Spring definition for the logging handler OSGi integration.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  							http://www.springframework.org/schema/beans/spring-beans.xsd
+  							http://www.springframework.org/schema/osgi
+  							http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+	
+	<osgi:service interface="com.soa.message.handler.HandlerFactory">
+		<osgi:service-properties>
+			<entry key="name" value="<%= props.namespace %>"/>
+			<entry key="scope" value="all"/>
+			<entry key="role" value="provider"/>
+		</osgi:service-properties>
+		<bean class="<%= props.packageHandler %>.<%= props.component %>MessageHandlerFactory"/>
+	</osgi:service>	
+	
+</beans>

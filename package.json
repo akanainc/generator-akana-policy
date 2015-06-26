@@ -1,0 +1,33 @@
+{
+  "name": "generator-akana-policy",
+  "version": "1.0.0",
+  "description": "Yeoman Akana Custom Policy generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "funnyenough/generator-akana-policy",
+  "author": {
+    "name": "Ashish Vaid",
+    "email": "ashish.vaid@akana.com",
+    "url": "https://github.com/funnyenough"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators/handler",
+    "generators/meta"   
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.19.0",
+    "chalk": "^1.0.0",
+    "yosay": "^1.0.2",
+    "superb": "1.x.x",
+    "validator": "3.x.x"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}

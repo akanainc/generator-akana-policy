@@ -1,0 +1,47 @@
+<project name="<%= props.namespace %>" default="all">
+
+	<property file="project.properties"/>
+	
+	<property name="config.dir" value="../META-INF/config"/>
+	<property name="spring.dir" value="../META-INF/spring"/>
+	
+	<property name="bundle.file" value="${deploy.dir}/<%= props.namespace %>_${major.version}.${minor.version}.jar"/>
+	
+	<fileset id="dependent.jars" dir="${lib.dir}">
+		<include name="*.jar"/>
+	</fileset>
+	
+	<path id="base.classpath">
+		<fileset refid="dependent.jars"/>
+    </path>	
+	
+    <target name="all" description="Build it all." depends="bundle"/>
+	
+    <target name="clean" description="Clean build artifacts" depends="init">
+        <delete dir="${classes.dir}"/>
+        <delete file="${bundle.file}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+	<target name="compile" depends="init">
+		<echo>Compiling <%= props.namespace %></echo>
+  		<javac destdir="${classes.dir}" debug="${javacdebug}" debuglevel="${debuglevel}" nowarn="${nowarn}" target="1.5">
+  			<src path="${src.dir}"/>
+  			<include name="**/*.java"/>
+  			<classpath>
+  			    <path refid="base.classpath"/>
+  		 	</classpath>
+  		</javac>
+	</target>
+	
+	<target name="bundle" depends="compile">
+		<jar destfile="${bundle.file}" manifest="../META-INF/MANIFEST.MF">
+			<fileset dir="${classes.dir}" includes="**/*.class"/>
+			<zipfileset dir="${spring.dir}" includes="*.*" prefix="META-INF/spring"/>
+		</jar>
+	</target>	
+	
+</project>
