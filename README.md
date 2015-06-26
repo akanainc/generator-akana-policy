@@ -1,4 +1,4 @@
-# generator-akana-policy [![Build Status](https://secure.travis-ci.org/funnyenough/generator-akana-policy.png?branch=master)](https://travis-ci.org/funnyenough/generator-akana-policy)
+# generator-akana-policy
 
 > [Yeoman](http://yeoman.io) generator
 
