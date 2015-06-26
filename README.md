@@ -35,6 +35,19 @@ Finally, initiate the generator:
 yo akana-policy
 ```
 
+Create symlink to the `lib` folder under your Policy Manager installation directory.
+
+```bash
+ln -s ~/soa/demo7/sm72/lib/ lib
+```
+
+To build
+
+```bash
+cd build
+ant
+```
+
 ### Getting To Know Yeoman
 
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
