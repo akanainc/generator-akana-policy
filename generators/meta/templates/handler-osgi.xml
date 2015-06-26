@@ -23,7 +23,7 @@
 		role: "consumer" (outgoing calls to downstream service) or "provider" (incoming calls to virtual service)
 	-->
 
-	<osgi:service ref="<%= props.namespace %>.handler.factory" interface="com.soa.policy.wspolicy.handler.WSPHandlerFactory">
+	<osgi:service ref="<%= props.namespace %>.handler.factory" interface="com.soa.message.handler.HandlerFactory">
 		<osgi:service-properties>
 			<entry key="name" value="<%= props.namespace %>.handler.factory"/>
 			<entry key="scope" value="abstract"/>
