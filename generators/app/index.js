@@ -4,6 +4,7 @@ var chalk = require('chalk');
 var yosay = require('yosay')
   , validator = require('validator')
   , superb    = require('superb')
+  , superheroes  = require('superheroes')
   , path      = require('path');
 
 module.exports = yeoman.generators.Base.extend({
@@ -14,7 +15,7 @@ module.exports = yeoman.generators.Base.extend({
     if (!this.options['skip-intro']) {
       // Have Yeoman greet the user.
       this.log(yosay(
-        'Welcome to the ' + superb() +  chalk.red(' Akana Policy') +' generator!'
+        'Welcome to the ' + superb() +  chalk.red(' Akana Custom Policy') +' generator!'
       ));
     }
 
@@ -114,6 +115,9 @@ module.exports = yeoman.generators.Base.extend({
 
   end: function () {
     this.config.save();
+    this.log(yosay(
+        'Alright, ' + chalk.red(superheroes.random()) +  ' you are all set!'
+    ));
   },
 
   install: function () {

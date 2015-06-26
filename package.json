@@ -15,7 +15,8 @@
   },
   "files": [
     "generators/handler",
-    "generators/meta"   
+    "generators/meta",
+    "generators/build"   
   ],
   "keywords": [
     "yeoman-generator"
@@ -25,7 +26,8 @@
     "chalk": "^1.0.0",
     "yosay": "^1.0.2",
     "superb": "1.x.x",
-    "validator": "3.x.x"
+    "validator": "3.x.x",
+    "superheroes": "1.x.x"
   },
   "devDependencies": {
     "mocha": "*"
