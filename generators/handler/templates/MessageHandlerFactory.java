@@ -1,4 +1,4 @@
-package <%= props.packageHandler %>;
+package <%= props.handlerPackage %>;
 
 import com.digev.fw.exception.GException;
 import com.soa.message.handler.HandlerContext;

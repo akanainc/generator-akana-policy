@@ -1,4 +1,4 @@
-package <%= props.packageHandler %>;
+package <%= props.handlerPackage %>;
 
 import java.io.StringWriter;
 

@@ -8,7 +8,7 @@ var MetaGenerator = yeoman.generators.Base.extend({
 
   initializing: function () {
     this.props = this.config.getAll();
-    this.props.packageHandler = this.props.namespace + '.handler';
+    this.props.handlerPackage = this.props.namespace + '.handler';
   },
 
   writing: function () {

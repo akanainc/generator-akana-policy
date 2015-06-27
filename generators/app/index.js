@@ -11,7 +11,7 @@ module.exports = yeoman.generators.Base.extend({
   prompting: function () {
     var done = this.async();
 
-    /* istanbul ignore if */
+    
     if (!this.options['skip-intro']) {
       // Have Yeoman greet the user.
       this.log(yosay(
@@ -65,7 +65,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.props = props;
-      this.config.set(props);
+      
 
       done();
     }.bind(this));
@@ -94,33 +94,32 @@ module.exports = yeoman.generators.Base.extend({
       this.directory('config');
     },
 
-    meta: function () {
-      this.composeWith('akana-policy:meta', {}, {
+    handler: function () {
+      this.composeWith('akana-policy:handler', {}, {
         link: 'strong'
-      }); 
+      })
     },
-
+    
     build: function () {
       this.composeWith('akana-policy:build', {}, {
         link: 'strong'
       });      
     },
 
-    handler: function () {
-      this.composeWith('akana-policy:handler', {}, {
+    meta: function () {
+      this.composeWith('akana-policy:meta', {}, {
         link: 'strong'
       }); 
-    }
+    });    
   },
 
   end: function () {
+    this.log(this.props.handlerType)
+    this.config.set(this.props);
     this.config.save();
     this.log(yosay(
-        'Alright, ' + chalk.red(superheroes.random()) +  ' you are all set!'
+      'Alright, ' + chalk.red(superheroes.random()) +  ' you are all set!'
     ));
-  },
-
-  install: function () {
-    
   }
+
 });

@@ -4,7 +4,7 @@
   "description": "Yeoman Akana Custom Policy generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "funnyenough/generator-akana-policy",
+  "repository": "akana/generator-akana-policy",
   "author": {
     "name": "Ashish Vaid",
     "email": "ashish.vaid@akana.com",
