@@ -120,7 +120,6 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   end: function () {
-    this.log(this.props.handlerType)
     this.config.set(this.props);
     this.config.save();
     this.log(yosay(

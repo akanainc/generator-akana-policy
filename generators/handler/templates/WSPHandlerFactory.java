@@ -19,15 +19,18 @@ import com.soa.policy.wspolicy.handler.PolicyHandlerFactoryCapability;
 import com.soa.policy.wspolicy.handler.WSPHandlerFactory;
 import com.soa.policy.wspolicy.util.PolicyUtils;
 
+import <%= props.constantsPackage %>.*;
+import com.akana.demo.policy.xml.model.*;
 
 
 public class <%= props.component %>WSPHandlerFactory implements WSPHandlerFactory{
 	
 		// capability stating support for the policy
-		private static PolicyHandlerFactoryCapability gCapability;
+		private static PolicyHandlerFactoryCapability policyHanderFactoryCapability;
 		private static Log log = Log.getLog(<%= props.component %>WSPHandlerFactory.class);
 		static {
-			gCapability = new PolicyHandlerFactoryCapability();			
+			policyHanderFactoryCapability = new PolicyHandlerFactoryCapability();	
+			policyHanderFactoryCapability.addSupportedAssertionNamespace(<%= props.component%>Constants.POLICY_NS);		
 		}
 		
 		/* Creates a ComplexPolicyHandler if the simple policy is present. The handler will be
@@ -51,6 +54,31 @@ public class <%= props.component %>WSPHandlerFactory implements WSPHandlerFactor
 
 		/* Return the policy we support */
 		public PolicyHandlerFactoryCapability getCapability() {
-			return gCapability;
+			return policyHanderFactoryCapability;
 		}
+
+		/* Find the policy assertion we support, if present */
+		private Assertion getAssertion(PolicyOperator policyOperator) {
+			Assertion assertion = null;
+			
+			// first check if present in policy operator's immediate child assertions
+			for (Assertion _assertion : policyOperator.getAssertions()) {
+				if (_assertion.getName().equals(<%= props.component%>Constants.POLICY_QNAME)) {
+					assertion = _assertion;
+					break;
+				}
+			}
+			/* could be a normalized policy. there are no choices in a policy choice so we can simply
+			 * search sub policy operators without worrying about exactlyOnes.
+			 */
+			if (assertion == null) {
+				for (PolicyOperator _policyOperator : policyOperator.getPolicyOperators()) {
+					if ((assertion = getAssertion(_policyOperator)) != null) {
+						break;
+					}
+				}
+			}
+			return assertion;
+		}
+
 }
