@@ -33,7 +33,14 @@ var HandlerGenerator = yeoman.generators.Base.extend({
   writing: function () {
     var handlerPath = (this.props.handlerPackage || '').replace(/\./g, '/');
     this.template('MessageHandler.java', path.join('src/main/java', handlerPath, this.props.component + 'MessageHandler.java'));
-    this.template('MessageHandlerFactory.java', path.join('src/main/java', handlerPath, this.props.component + 'MessageHandlerFactory.java'));
+    if(this.props.handlerType=='Policy'){
+      this.template('WSPHandlerFactory.java', path.join('src/main/java', handlerPath, this.props.component + 'WSPHandlerFactory.java'));
+
+    }else{
+      this.template('MessageHandlerFactory.java', path.join('src/main/java', handlerPath, this.props.component + 'MessageHandlerFactory.java'));
+
+    }
+
   },
 
   end: function(){

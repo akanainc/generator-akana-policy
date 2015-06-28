@@ -103,14 +103,20 @@ module.exports = yeoman.generators.Base.extend({
     build: function () {
       this.composeWith('akana-policy:build', {}, {
         link: 'strong'
-      });      
+      })     
     },
 
     meta: function () {
       this.composeWith('akana-policy:meta', {}, {
         link: 'strong'
-      }); 
-    });    
+      })
+    },
+
+    model: function(){
+      this.composeWith('akana-policy:model', {}, {
+        link: 'strong'
+      })
+    }   
   },
 
   end: function () {
