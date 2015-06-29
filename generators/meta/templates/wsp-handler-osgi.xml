@@ -40,7 +40,7 @@
 		
 	</osgi:service>	
 	
-	<bean id="<%= props.handlerPackage %>.factory" class="<%= props.handlerPackage %>.<%= props.component %>MessageHandlerFactory"/>
+	<bean id="<%= props.handlerPackage %>.factory" class="<%= props.handlerPackage %>.<%= props.component %>WSPHandlerFactory"/>
 
 	<!-- publish the complex policy template. An id property needs to be included that matches the template id -->
 	<osgi:service ref="<%= props.templatePackage %>" interface="com.soa.policy.template.OperationalPolicyTemplate">

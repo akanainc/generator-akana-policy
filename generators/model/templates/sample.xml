@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" visibility="public">
-	<Settings xmlns:soawesome="urn:com.akana.awesome.policy">
+	<Settings xmlns:soawesome="urn:<%= props.namespace %>">
 	    <Setting key="prop.1">Property Value</Setting>
 	    <Setting key="prop.2">Hello World</Setting>
 	</Settings>
