@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Settings xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="list-key-value.xsd">
+    <Setting key="prop.1">Property Value</Setting>
+    <Setting key="prop.2">Hello World</Setting>
+</Settings>
