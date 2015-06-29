@@ -16,7 +16,10 @@
   "files": [
     "generators/handler",
     "generators/meta",
-    "generators/build"   
+    "generators/build",
+    "generators/model",
+    "generators/assertion",
+    "generators/template"
   ],
   "keywords": [
     "yeoman-generator"
@@ -31,5 +34,6 @@
   },
   "devDependencies": {
     "mocha": "*"
-  }
+  }, 
+  "license": "UNLICENSED"   
 }
