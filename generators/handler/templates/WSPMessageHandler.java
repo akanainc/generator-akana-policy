@@ -43,7 +43,7 @@ public class <%= props.component %>MessageHandler implements MessageHandler {
             log.info("<%= props.component %>MessageHandler: " + msgToString(msgContent));
 
             // log policy settings
-            for(Setting setting: settings.getSetting()){
+            for(Settings.Setting setting: settings.getSetting()){
                 log.info("<%= props.component %>MessageHandler: " + setting.getKey() +":"+ setting.getValue());
             }
 

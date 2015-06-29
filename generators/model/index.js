@@ -16,7 +16,7 @@ var ModelGenerator = yeoman.generators.Base.extend({
         var modelPath = (this.props.modelPackage || '').replace(/\./g, '/');
         this.template('ObjectFactory.java', path.join('src/main/java', modelPath, 'ObjectFactory.java'));
         this.template('Settings.java', path.join('src/main/java', modelPath, 'Settings.java'));
-        this.template('Setting.java', path.join('src/main/java', modelPath, 'Setting.java'));
+        this.template('package-info.java', path.join('src/main/java', modelPath, 'package-info.java'));
         this.template('sample.xml', 'sample-policy.xml');
       }
   },

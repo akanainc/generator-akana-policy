@@ -1,15 +1,12 @@
 package <%= props.modelPackage %>;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
-import javax.xml.namespace.QName;
 
 
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.akana.demo.policy.bean package. 
+ * generated in the <%= props.modelPackage %> package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -23,10 +20,9 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Settings_QNAME = new QName("urn:<%= props.namespace %>", "Settings");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.akana.demo.policy.bean
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: policy.awesome.akana.com
      * 
      */
     public ObjectFactory() {
@@ -41,20 +37,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Setting }
+     * Create an instance of {@link Settings.Setting }
      * 
      */
-    public Setting createSetting() {
-        return new Setting();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Settings }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "urn:<%= props.namespace %>", name = "Settings")
-    public JAXBElement<Settings> createSettings(Settings value) {
-        return new JAXBElement<Settings>(_Settings_QNAME, Settings.class, null, value);
+    public Settings.Setting createSettingsSetting() {
+        return new Settings.Setting();
     }
 
 }
