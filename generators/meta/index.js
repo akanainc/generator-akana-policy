@@ -14,6 +14,10 @@ var MetaGenerator = yeoman.generators.Base.extend({
   writing: function () {
     this.template('handler-osgi.xml', path.join('META-INF/spring', 'handler-osgi.xml'));
     this.template('MANIFEST.MF', path.join('META-INF', 'MANIFEST.MF'));
+  },
+
+  end: function(){
+    this.config.set(this.props)
   }
 });
 

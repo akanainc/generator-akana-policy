@@ -65,8 +65,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.props = props;
-      
-
+      this.config.set(this.props);
       done();
     }.bind(this));
   },
@@ -99,7 +98,25 @@ module.exports = yeoman.generators.Base.extend({
         link: 'strong'
       })
     },
-    
+
+    model: function(){
+      this.composeWith('akana-policy:model', {}, {
+        link: 'strong'
+      })
+    },  
+
+    assertion: function(){
+      this.composeWith('akana-policy:assertion', {}, {
+        link: 'strong'
+      })
+    },  
+
+    template: function(){
+      this.composeWith('akana-policy:template', {}, {
+        link: 'strong'
+      })
+    },
+
     build: function () {
       this.composeWith('akana-policy:build', {}, {
         link: 'strong'
@@ -110,13 +127,8 @@ module.exports = yeoman.generators.Base.extend({
       this.composeWith('akana-policy:meta', {}, {
         link: 'strong'
       })
-    },
-
-    model: function(){
-      this.composeWith('akana-policy:model', {}, {
-        link: 'strong'
-      })
-    }   
+    }
+ 
   },
 
   end: function () {

@@ -20,7 +20,8 @@ import com.soa.policy.wspolicy.handler.WSPHandlerFactory;
 import com.soa.policy.wspolicy.util.PolicyUtils;
 
 import <%= props.constantsPackage %>.*;
-import com.akana.demo.policy.xml.model.*;
+import <%= props.assertionPackage %>.*;
+import com.akana.demo.policy.bean.*;
 
 
 public class <%= props.component %>WSPHandlerFactory implements WSPHandlerFactory{
@@ -47,6 +48,17 @@ public class <%= props.component %>WSPHandlerFactory implements WSPHandlerFactor
 			
 			for(ChoiceIdentifier id : (Collection<ChoiceIdentifier>) policyChoices.getChoiceIdentifiers()) { 
 				Policy policy = policyChoices.getChoice(id);
+				Assertion assertion = PolicyUtils.getAssertion(policy, <%= props.component %>Assertion.class);
+				if(assertion != null){
+					Settings settings = (Settings)((<%= props.component %>Assertion)assertion).getObject();
+					log.error("EPEntitlementHandlerFactory invoked: " + role.toString() + ((WSDLHandlerContext)context).getParameterType().toString());
+	            	if (role == HandlerRole.PROVIDER && ((WSDLHandlerContext)context).getParameterType() == ParameterType.IN) {
+	            		handler = new  <%= props.component %>MessageHandler();
+	            	}else if(role == HandlerRole.CONSUMER && ((WSDLHandlerContext)context).getParameterType() == ParameterType.IN){
+	            		// Add your Consumer IN MessageHandler here!
+	            	}
+	            	break;
+				}
 				
 			}
 			return handler;

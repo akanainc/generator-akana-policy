@@ -13,8 +13,12 @@ var ModelGenerator = yeoman.generators.Base.extend({
 
   writing: function () {
     if(this.props.handlerType=='Policy'){
-        this.directory('com', 'src/java/main');
+        this.directory('.', 'src/main/java');
       }
+  },
+
+  end: function(){
+    this.config.set(this.props)
   }
 });
 

@@ -26,7 +26,7 @@ public class <%= props.component %>MessageHandler implements MessageHandler {
     private static final Log log = Log.getLog(<%= props.component %>MessageHandler.class);
 	
     public void close(MessageContext context) {
-        // no cleanup necessary
+         // Any cleanup code goes here
     }
 
     /* Logs the content of the message */
