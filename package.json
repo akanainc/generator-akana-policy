@@ -1,8 +1,8 @@
 {
   "name": "generator-akana-policy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yeoman Akana Custom Policy generator",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "main": "app/index.js",
   "repository": "akana/generator-akana-policy",
   "author": {
@@ -34,6 +34,5 @@
   },
   "devDependencies": {
     "mocha": "*"
-  }, 
-  "license": "UNLICENSED"   
+  }
 }
