@@ -51,9 +51,10 @@ public class <%= props.component %>WSPHandlerFactory implements WSPHandlerFactor
 				Assertion assertion = PolicyUtils.getAssertion(policy, <%= props.component %>Assertion.class);
 				if(assertion != null){
 					Settings settings = (Settings)((<%= props.component %>Assertion)assertion).getObject();
-					log.error("EPEntitlementHandlerFactory invoked: " + role.toString() + ((WSDLHandlerContext)context).getParameterType().toString());
+					log.error("<%= props.component %>WSPHandlerFactory invoked: " + role.toString() + ((WSDLHandlerContext)context).getParameterType().toString());
 	            	if (role == HandlerRole.PROVIDER && ((WSDLHandlerContext)context).getParameterType() == ParameterType.IN) {
 	            		handler = new  <%= props.component %>MessageHandler();
+	            		((<%= props.component %>MessageHandler)handler).setSettings(settings);
 	            	}else if(role == HandlerRole.CONSUMER && ((WSDLHandlerContext)context).getParameterType() == ParameterType.IN){
 	            		// Add your Consumer IN MessageHandler here!
 	            	}
