@@ -29,6 +29,7 @@ var HandlerGenerator = yeoman.generators.Base.extend({
   initializing: function () {
     this.props.handlerPackage = this.props.namespace + '.handler';
     this.props.constantsPackage = this.props.namespace + '.constants';
+    this.props.modelPackage = this.props.namespace + '.assertion.model';
   },
 
   writing: function () {

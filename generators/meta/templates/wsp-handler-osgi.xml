@@ -69,7 +69,7 @@
 		</property>
 		<property name="jaxbPaths">
 			<list>
-				<value>com.akana.demo.policy.bean</value>
+				<value><%= props.modelPackage %></value>
 			</list>
 		</property>
 	</bean>

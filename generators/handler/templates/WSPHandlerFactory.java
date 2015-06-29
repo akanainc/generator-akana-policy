@@ -21,7 +21,7 @@ import com.soa.policy.wspolicy.util.PolicyUtils;
 
 import <%= props.constantsPackage %>.*;
 import <%= props.assertionPackage %>.*;
-import com.akana.demo.policy.bean.*;
+import <%= props.modelPackage %>.*;
 
 
 public class <%= props.component %>WSPHandlerFactory implements WSPHandlerFactory{

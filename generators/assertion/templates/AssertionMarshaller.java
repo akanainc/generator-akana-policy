@@ -18,7 +18,7 @@ import com.soa.policy.wspolicy.Policy;
 
 import <%= props.constantsPackage %>.*;
 import <%= props.assertionPackage %>.*;
-import com.akana.demo.policy.bean.*;
+import <%= props.modelPackage %>.*;
 
 @XmlSeeAlso(Settings.class)
 public class <%= props.component %>AssertionMarshaller implements AssertionMarshaller {

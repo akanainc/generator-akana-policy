@@ -14,7 +14,7 @@ import com.soa.message.handler.MessageContext;
 import com.soa.message.handler.MessageFaultException;
 import com.soa.message.handler.MessageHandler;
 
-import com.akana.demo.policy.bean.*;
+import <%= props.modelPackage %>.*;
 
 /**
  * Copyright (C) <%= new Date().getFullYear() %> Akana Inc. 

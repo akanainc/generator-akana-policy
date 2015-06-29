@@ -3,7 +3,7 @@ package <%= props.assertionPackage %>;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import com.digev.fw.log.Log;
-import com.akana.demo.policy.bean.*;
+import <%= props.modelPackage %>.*;
 import com.soa.policy.wspolicy.JavaAssertion;
 
 /**
