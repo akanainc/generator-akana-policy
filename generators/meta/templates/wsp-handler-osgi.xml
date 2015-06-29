@@ -28,7 +28,7 @@
 	-->
 	
     <!-- Publishes the same factory to the soap binding for outgoing SOAP messages. -->
-	
+
 	<osgi:service ref="<%= props.handlerPackage %>.factory" interface="com.soa.policy.wspolicy.handler.WSPHandlerFactory">
 		<osgi:service-properties>
 			<entry key="name" value="<%= props.handlerPackage %>.factory"/>
@@ -37,7 +37,53 @@
 			<!--entry key="binding" value="http"/-->
 			<!-- entry key="after" value="*"/-->   
 		</osgi:service-properties>
-		<bean class="<%= props.handlerPackage %>.<%= props.component %>MessageHandlerFactory"/>
+		
 	</osgi:service>	
 	
+	<bean id="<%= props.handlerPackage %>.factory" class="<%= props.handlerPackage %>.<%= props.component %>MessageHandlerFactory"/>
+
+	<!-- publish the complex policy template. An id property needs to be included that matches the template id -->
+	<osgi:service ref="<%= props.templatePackage %>" interface="com.soa.policy.template.OperationalPolicyTemplate">
+		<osgi:service-properties>
+			<entry key="name" value="<%= props.templatePackage %>"/>
+			<entry key="id" value="policy.<%= props.component.toLowerCase() %>"/>
+		</osgi:service-properties>
+	</osgi:service>
+
+	<!-- Complex assertion QName -->
+	<bean id="<%= props.assertionPackage %>" class="javax.xml.namespace.QName">
+        <constructor-arg value="urn:<%= props.namespace %>" />
+        <constructor-arg value="<%= props.component.toLowerCase() %>"/>
+    </bean>
+
+	<!-- Complex policy template -->
+	<bean id="<%= props.templatePackage %>" class="com.ep.entitlement.template.EPEntitlementTemplate"/>
+
+
+    <!-- internal complex policy jaxb assertion marshaller, not published since no sub-policies -->
+    <bean id="<%= props.component.toLowerCase() %>.jaxb.marshaller" class="com.soa.policy.wspolicy.JaxbAssertionMarshaller"  init-method="init">
+    	<property name="assertionQNames">
+			<list>
+				<ref bean="<%= props.assertionPackage %>"/>
+			</list>
+		</property>
+		<property name="jaxbPaths">
+			<list>
+				<value>com.akana.demo.policy.bean</value>
+			</list>
+		</property>
+	</bean>
+
+ 	<!-- publish the complex marshaller -->
+	<osgi:service ref="<%= props.marshallerPackage %>" interface="com.soa.policy.wspolicy.AssertionMarshaller">
+		<osgi:service-properties>
+			<entry key="name" value="<%= props.marshallerPackage %>"/>
+		</osgi:service-properties>	
+	</osgi:service>
+
+	<!-- complex master/parent policy marshaller -->
+    <bean id="<%= props.marshallerPackage %>" class="<%= props.marshallerPackage %>.<%= props.component %>AssertionMarshaller">
+        <property name="jaxbMarshaller" ref="<%= props.component.toLowerCase() %>.jaxb.marshaller"/>
+    </bean>
+
 </beans>

@@ -11,9 +11,13 @@ var MetaGenerator = yeoman.generators.Base.extend({
     this.props.handlerPackage = this.props.namespace + '.handler';
   },
 
-  writing: function () {
-    this.template('handler-osgi.xml', path.join('META-INF/spring', 'handler-osgi.xml'));
+  writing: function () {  
     this.template('MANIFEST.MF', path.join('META-INF', 'MANIFEST.MF'));
+    if(this.props.handlerType=='Policy'){
+    	this.template('wsp-handler-osgi.xml', path.join('META-INF/spring', 'handler-osgi.xml'));
+    }else{
+    	this.template('handler-osgi.xml', path.join('META-INF/spring', 'handler-osgi.xml'));
+    }
   },
 
   end: function(){
