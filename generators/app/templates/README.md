@@ -21,11 +21,16 @@ cd build
 ant
 ```
 
-Take the built jar file and drop it under the $AKANA_HOME/sm72/instances/$ND_INSTANCE_NAME/deploy folder
+Take the built jar file and drop it under the `$AKANA_HOME/sm72/instances/$ND_INSTANCE_NAME/deploy` folder
 
 
-*** FOR WSPHandlerFactory only
+**For WSPHandlerFactory only**
+
 Use sample-policy.xml as a starting point to configure XML Operational Policy in Policy Manager
+
+Attach the policy to your Service or the API. 
+
+Tail ND logs to verify `Settings` are logged (you might have to adjust log4j log settings under the `/admin` console)
 
 ---
 
