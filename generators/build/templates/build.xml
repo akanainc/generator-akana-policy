@@ -7,7 +7,7 @@
 	<property name="schema.dir" value="../META-INF/resources" />
 	<property name="binding.dir" value="./" />
 	<property name="target.dir" value="./generated" />
-	<property name="bundle.file" value="${deploy.dir}/<%= props.namespace %>_${major.version}.${minor.version}.jar"/>
+	<property name="bundle.file" value="${deploy.dir}/<%= props.namespace %>_${major.version}.${minor.version}.${micro.version}.jar"/>
 	
 	<fileset id="dependent.jars" dir="${lib.dir}">
 		<include name="**/*.jar"/>

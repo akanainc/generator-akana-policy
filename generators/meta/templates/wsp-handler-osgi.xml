@@ -43,12 +43,12 @@
 	<bean id="<%= props.handlerPackage %>.factory" class="<%= props.handlerPackage %>.<%= props.component %>WSPHandlerFactory"/>
 
 	<!-- publish the complex policy template. An id property needs to be included that matches the template id -->
-	<osgi:service ref="<%= props.templatePackage %>" interface="com.soa.policy.template.OperationalPolicyTemplate">
+	<!--osgi:service ref="<%= props.templatePackage %>" interface="com.soa.policy.template.OperationalPolicyTemplate">
 		<osgi:service-properties>
 			<entry key="name" value="<%= props.templatePackage %>"/>
 			<entry key="id" value="policy.<%= props.component.toLowerCase() %>"/>
 		</osgi:service-properties>
-	</osgi:service>
+	</osgi:service-->
 
 	<!-- Complex assertion QName -->
 	<bean id="<%= props.assertionPackage %>" class="javax.xml.namespace.QName">
@@ -57,7 +57,7 @@
     </bean>
 
 	<!-- Complex policy template -->
-	<bean id="<%= props.templatePackage %>" class="<%= props.templatePackage %>.<%= props.component %>Template"/>
+	<!-- bean id="<%= props.templatePackage %>" class="<%= props.templatePackage %>.<%= props.component %>Template"/-->
 
 
     <!-- internal complex policy jaxb assertion marshaller, not published since no sub-policies -->

@@ -7,7 +7,7 @@ import javax.xml.namespace.QName;
 import org.w3c.dom.Element;
 
 import com.digev.fw.exception.GException;
-
+import com.digev.fw.log.Log;
 import com.soa.policy.PolicyErrorCode;
 import com.soa.policy.wspolicy.Assertion;
 import com.soa.policy.wspolicy.AssertionMarshaller;
@@ -26,7 +26,7 @@ public class <%= props.component %>AssertionMarshaller implements AssertionMarsh
 private static QName[] supportedAssertions = new QName[] { <%= props.component %>Constants.POLICY_QNAME};
 	
 	private JaxbAssertionMarshaller jaxbMarshaller; 
-	
+	private static Log log = Log.getLog(<%= props.component %>AssertionMarshaller.class);
 	public void setJaxbMarshaller(JaxbAssertionMarshaller jaxbMarshaller) {
         this.jaxbMarshaller = jaxbMarshaller;
     }

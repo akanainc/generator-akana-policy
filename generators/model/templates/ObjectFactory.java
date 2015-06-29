@@ -23,7 +23,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Settings_QNAME = new QName("", "Settings");
+    private final static QName _Settings_QNAME = new QName("urn:<%= props.namespace %>", "Settings");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.akana.demo.policy.bean
@@ -52,7 +52,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Settings }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "", name = "Settings")
+    @XmlElementDecl(namespace = "urn:<%= props.namespace %>", name = "Settings")
     public JAXBElement<Settings> createSettings(Settings value) {
         return new JAXBElement<Settings>(_Settings_QNAME, Settings.class, null, value);
     }

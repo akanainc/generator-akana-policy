@@ -40,11 +40,11 @@ public class <%= props.component %>MessageHandler implements MessageHandler {
             // get the message from the context
             Source msgContent = context.getMessage().getContent();
             // log the message content as an informative message
-            log.logText("<%= props.component %>MessageHandler: " + msgToString(msgContent), LogLevel.INFO);
+            log.info("<%= props.component %>MessageHandler: " + msgToString(msgContent));
 
             // log policy settings
             for(Setting setting: settings.getSetting()){
-                log.logText("<%= props.component %>MessageHandler: " + setting.getKey() +":"+ setting.getValue(), LogLevel.INFO);
+                log.info("<%= props.component %>MessageHandler: " + setting.getKey() +":"+ setting.getValue());
             }
 
             return true; // continue handler processing
