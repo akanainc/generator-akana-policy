@@ -57,7 +57,7 @@
     </bean>
 
 	<!-- Complex policy template -->
-	<bean id="<%= props.templatePackage %>" class="com.ep.entitlement.template.EPEntitlementTemplate"/>
+	<bean id="<%= props.templatePackage %>" class="<%= props.templatePackage %>.<%= props.component %>Template"/>
 
 
     <!-- internal complex policy jaxb assertion marshaller, not published since no sub-policies -->
