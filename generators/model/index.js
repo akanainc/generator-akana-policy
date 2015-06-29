@@ -17,6 +17,7 @@ var ModelGenerator = yeoman.generators.Base.extend({
         this.template('ObjectFactory.java', path.join('src/main/java', modelPath, 'ObjectFactory.java'));
         this.template('Settings.java', path.join('src/main/java', modelPath, 'Settings.java'));
         this.template('Setting.java', path.join('src/main/java', modelPath, 'Setting.java'));
+        this.template('sample.xml', 'sample-policy.xml');
       }
   },
 
