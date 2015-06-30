@@ -15,6 +15,7 @@ var BuildGenerator = yeoman.generators.Base.extend({
     this.template('build.xml', path.join('build', 'build.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g });
     this.template('project.properties', path.join('build', 'project.properties'));
     this.template('build.properties', 'build.properties');
+    this.template('pom.xml', 'pom.xml', null, { 'interpolate': /<%=([\s\S]+?)%>/g});
   }
 });
 

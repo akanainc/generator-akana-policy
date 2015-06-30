@@ -6,12 +6,19 @@
 
 - [Java SE](http://www.oracle.com/technetwork/java/javase/overview)
 - [Ant](http://ant.apache.org)
-
+- [Maven] (http://maven.apache.org)
 
 Create symlink to the `lib` folder under your Policy Manager installation directory.
 
 ```bash
 ln -s $AKANA_HOME/sm72/lib/ lib
+```
+
+
+To generate Eclipse project
+
+```bash
+mvn eclipse:eclipse
 ```
 
 To build
@@ -20,6 +27,8 @@ To build
 cd build
 ant
 ```
+
+To deploy the build
 
 Take the built jar file and drop it under the `$AKANA_HOME/sm72/instances/$ND_INSTANCE_NAME/deploy` folder
 
