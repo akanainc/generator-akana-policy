@@ -1,9 +1,9 @@
 {
   "name": "generator-akana-policy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Yeoman Akana Custom Policy generator",
-  "license": "UNLICENSED",
-  "main": "app/index.js",
+  "license": "Apache-2.0",
+  "main": "generators/app/index.js",
   "repository": "akanainc/generator-akana-policy",
   "author": {
     "name": "Ashish Vaid",
@@ -14,7 +14,7 @@
     "test": "mocha"
   },
   "files": [
-    "app",
+    "generators/app",
     "generators/handler",
     "generators/meta",
     "generators/build",
