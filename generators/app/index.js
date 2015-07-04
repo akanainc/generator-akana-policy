@@ -51,20 +51,31 @@ module.exports = yeoman.generators.Base.extend({
     }, {
       type: 'input'
     , name: 'namespace'
-    , message: 'Choose a package namespace'
+    , message: 'Name your Java package namespace'
     , default: this.config.get('namespace')
     },{
        type: 'input'
     , name: 'component'
-    , message: 'Name your Class prefix (TitleCase - Alphanumeric)'
+    , message: 'Name your Java class prefix (TitleCase - Alphanumeric)'
     , default: this.config.get('component')
     , validate: function (input) {
         return validator.isAlphanumeric(input);
       }
+    },{
+      type: 'list',
+      name: 'handlerType',
+      message: 'Select your handler factory',
+      choices: [{'value':'Policy', 'name':'  WSPHandlerFactory'}, {'value':'Message', 'name': '  MessageHandlerFactory'}]
     }];
 
     this.prompt(prompts, function (props) {
       this.props = props;
+      this.props.templatePackage = this.props.namespace + '.template';
+      this.props.assertionPackage = this.props.namespace + '.assertion';
+      this.props.marshallerPackage = this.props.assertionPackage + '.marshaller';
+      this.props.modelPackage = this.props.assertionPackage + '.model';
+      this.props.handlerPackage = this.props.namespace + '.handler';
+      this.props.constantsPackage = this.props.namespace + '.constants';
       this.config.set(this.props);
       done();
     }.bind(this));
@@ -132,7 +143,6 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   end: function () {
-    this.config.set(this.props);
     this.config.save();
     this.log(yosay(
       'Alright, ' + chalk.red(superheroes.random()) +  ' you are all set!'

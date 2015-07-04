@@ -8,7 +8,6 @@ var TemplateGenerator = yeoman.generators.Base.extend({
 
   initializing: function () {
     this.props = this.config.getAll();
-    this.props.templatePackage = this.props.namespace + '.template';
   },
 
   writing: function () {

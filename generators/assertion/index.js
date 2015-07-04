@@ -8,9 +8,6 @@ var AssertionGenerator = yeoman.generators.Base.extend({
 
   initializing: function () {
     this.props = this.config.getAll();
-    this.props.assertionPackage = this.props.namespace + '.assertion';
-    this.props.marshallerPackage = this.props.assertionPackage + '.marshaller';
-    this.props.modelPackage = this.props.assertionPackage + '.model';
   },
 
   writing: function () {

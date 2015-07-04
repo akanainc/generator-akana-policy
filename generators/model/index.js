@@ -8,7 +8,6 @@ var ModelGenerator = yeoman.generators.Base.extend({
 
   initializing: function () {
     this.props = this.config.getAll();
-    this.props.modelPackage = this.props.assertionPackage + '.model';
   },
 
   writing: function () {

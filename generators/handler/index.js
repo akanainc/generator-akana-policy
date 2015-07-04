@@ -10,26 +10,8 @@ var HandlerGenerator = yeoman.generators.Base.extend({
     this.props = this.config.getAll();
   },
 
-  prompting: function () {
-    var done = this.async();
-    var prompts = [{
-      type: 'list',
-      name: 'handlerType',
-      message: 'Select your handler factory',
-      choices: [{'value':'Policy', 'name':'WSPHandlerFactory'}, {'value':'Message', 'name': 'MessageHandlerFactory'}]
-    }]
-
-    this.prompt(prompts, function (props) {
-      this.props.handlerType = props.handlerType;
-      done()
-    }.bind(this));
-    
-  },
-
   initializing: function () {
-    this.props.handlerPackage = this.props.namespace + '.handler';
-    this.props.constantsPackage = this.props.namespace + '.constants';
-    this.props.modelPackage = this.props.namespace + '.assertion.model';
+
   },
 
   writing: function () {
