@@ -1,6 +1,6 @@
 {
   "name": "generator-akana-policy",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Yeoman Akana Custom Policy generator",
   "license": "Apache-2.0",
   "main": "generators/app/index.js",
