@@ -15,7 +15,7 @@ ln -s $AKANA_HOME/sm72/lib/ lib
 ```
 
 
-To generate Eclipse project
+To generate an Eclipse project
 
 ```bash
 mvn eclipse:eclipse

@@ -37,4 +37,10 @@ Import-Package: com.digev.fw.exception;version="7.0.0",
  org.w3c.dom,
  org.xml.sax,
  org.bouncycastle.jce.provider
-Export-Package: <%= props.handlerPackage %>
+Export-Package: <%= props.handlerPackage %>,
+ <%= props.assertionPackage %>,
+ <%= props.marshallerPackage %>,
+ <%= props.modelPackage %>,
+ <%= props.constantsPackage %>,
+ <%= props.templatePackage %>
+

@@ -56,4 +56,4 @@ Yeoman has a heart of gold. He's a person with feelings and opinions, but he's v
 
 
 ## License
-(c) Akana Inc. All Rights Rerserved.
+Apache 2.0
