@@ -1,4 +1,4 @@
-<project name="<%= props.component.toLowerCase() %>-performer" default="all">
+<project name="<%= props.component.toLowerCase() %>-handler" default="all">
 
 	<property file="project.properties"/>
 	

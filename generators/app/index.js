@@ -131,10 +131,10 @@ module.exports = yeoman.generators.Base.extend({
       if(this.props.handlerType=='Policy'){
         /*this.composeWith('akana-policy:build-wsp-settings', {}, {
           link: 'strong'
-        })
+        })*/
         this.composeWith('akana-policy:feature-wsp-settings', {}, {
           link: 'strong'
-        })*/
+        })
         this.composeWith('akana-policy:handler-wsp-settings', {}, {
           link: 'strong'
         })

@@ -1,0 +1,19 @@
+<project name="<%= props.component.toLowerCase() %>-feature-nd" default="all">
+	
+	<property file="project.properties"/>
+	
+	<property name="bundle.file" value="${dist.dir}/<%=props.handlerFeature%>_${bundle.version}.jar"/>
+		
+    <target name="all" description="Build it all." depends="bundle"/>
+	
+    <target name="clean" description="clean build artifacts">
+        <delete file="${bundle.file}"/>
+    </target>
+
+	<target name="bundle" depends="clean">
+		<jar destfile="${bundle.file}" manifest="${root.dir}/META-INF/MANIFEST.MF">
+			<zipfileset dir="${spring.dir}" includes="*.*" prefix="META-INF/spring"/>
+		</jar>
+	</target>	
+
+</project>

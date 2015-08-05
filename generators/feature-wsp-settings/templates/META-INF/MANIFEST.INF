@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: <%=props.title%> Plugin for Network Director
+Bundle-Description: This feature must be installed along with the Network Director to provide support for the '<%=props.title%>' custom policy. <%=props.description%>. 
+Bundle-SymbolicName: <%=props.handlerFeature%>
+Bundle-Category: x-soa-plugin
+Bundle-Version: <%=props.bundleVersion%>
+Bundle-Vendor: <%= props.author %> - <%= props.email %>
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ClassPath: .,
+ META-INF/resources/
+Require-Bundle: <%=props.modelPackage%>;bundle-version="<%=props.bundleVersion%>",
+ <%=props.handlerPackage%>;bundle-version="<%=props.bundleVersion%>"
+Import-Package: com.digev.fw.exception;version="6.0.0",
+ com.soa.admin.service.tasks;version="6.0.0",
+ com.soa.admin.service.tasks.impl;version="6.0.0",
+ com.soa.admin.service.tasktemplate;version="6.0.0",
+ com.soa.admin.service.tasktemplate.impl;version="6.0.0",
+ com.soa.admin.task.spring;version="6.0.0"

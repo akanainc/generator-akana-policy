@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+  Spring definition for the Akana subsystems feature bundle.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:ctx="http://www.springframework.org/schema/context"       
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  							http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context.xsd  							
+							http://www.springframework.org/schema/osgi-compendium
+							http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd   							
+  							http://www.springframework.org/schema/osgi
+  							http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<osgi:service interface="com.soa.admin.service.tasks.Task">   
+		<osgi:service-properties>
+			<entry key="name" value="<%=props.rendererFeature%>.task"/>
+		</osgi:service-properties>	
+		<bean class="com.soa.admin.service.tasks.TaskImpl">
+			<property name="name" value="<%=props.rendererFeature%>"/>
+		</bean>
+	</osgi:service>
+
+	<!-- Configurer that replaces ${...} placeholders with values from Config Admin general PID. -->
+	<!--
+	<osgix:cm-properties id="com.soa.config" persistent-id="com.soa.config"/>
+	<ctx:property-placeholder properties-ref="com.soa.config"/>
+	-->
+
+</beans>
