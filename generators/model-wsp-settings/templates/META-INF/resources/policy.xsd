@@ -1,0 +1,20 @@
+<xsd:schema  targetNamespace="urn:<%= props.namespace %>" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:settings="urn:<%= props.namespace %>">
+ <xsd:element name="<%= props.component %>Policy">
+  <!-- Please do not modify the namespace or the name of the element. -->
+  <!-- MODIDICATION AREA BEGINS HERE -->
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="Setting" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+              <xsd:attribute name="key" type="xsd:string" use="required"> </xsd:attribute>
+            </xsd:extension>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!-- MODIDICATION AREA ENDS HERE -->
+  </xsd:element>
+</xsd:schema>

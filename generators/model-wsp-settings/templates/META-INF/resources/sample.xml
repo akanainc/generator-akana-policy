@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" visibility="public">
+	<<%= props.component.toLowerCase() %>:<%= props.component %>Policy xmlns:<%= props.component.toLowerCase() %>="urn:<%= props.namespace %>">
+	    <<%= props.component.toLowerCase() %>:Setting key="prop.1">Property Value</<%= props.component.toLowerCase() %>:Setting>
+	    <<%= props.component.toLowerCase() %>:Setting key="prop.2">Hello World</<%= props.component.toLowerCase() %>:Setting>
+	</<%= props.component.toLowerCase() %>:<%= props.component %>Policy>
+</wsp:Policy>	

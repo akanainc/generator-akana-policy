@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+                jaxb:extensionBindingPrefixes="xjc"
+                version="1.0">
+
+   <jaxb:bindings schemaLocation="./policy.xsd" node="/xsd:schema">
+     <jaxb:schemaBindings>
+       <jaxb:package name="<%= props.modelPackage%>"/>
+     </jaxb:schemaBindings>
+   </jaxb:bindings>               
+     
+ </jaxb:bindings>

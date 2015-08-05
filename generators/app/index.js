@@ -66,6 +66,30 @@ module.exports = yeoman.generators.Base.extend({
       name: 'handlerType',
       message: 'Select your handler factory',
       choices: [{'value':'Policy', 'name':'  WSPHandlerFactory'}, {'value':'Message', 'name': '  MessageHandlerFactory'}]
+    },{
+      type: 'input',
+      name: 'bundleVersion',
+      message: 'Activity Version',
+      default: this.config.get('bundleVersion') || '8.0.0',
+      validate: function (input) {
+        return input ? true : false;
+      }
+    },{
+      type: 'input',
+      name: 'gatewayBaseVersion',
+      message: 'Gateway Base Version',
+      default: this.config.get('gatewayBaseVersion') || '7.2.0',
+      validate: function (input) {
+        return input ? true : false;
+      }
+    },{
+      type: 'input',
+      name: 'gatewayUpdateVersion',
+      message: 'Gateway Cumulative Update Version',
+      default: this.config.get('gatewayUpdateVersion') || '7.2.10',
+      validate: function (input) {
+        return input ? true : false;
+      }
     }];
 
     this.prompt(prompts, function (props) {
@@ -73,9 +97,12 @@ module.exports = yeoman.generators.Base.extend({
       this.props.templatePackage = this.props.namespace + '.template';
       this.props.assertionPackage = this.props.namespace + '.assertion';
       this.props.marshallerPackage = this.props.assertionPackage + '.marshaller';
-      this.props.modelPackage = this.props.assertionPackage + '.model';
+      this.props.modelPackage = this.props.namespace + '.model';
       this.props.handlerPackage = this.props.namespace + '.handler';
       this.props.constantsPackage = this.props.namespace + '.constants';
+      this.props.modelModule = this.props.modelPackage;
+      this.props.handlerModule = this.props.handlerPackage;
+      this.props.handlerFeature = this.props.handlerPackage + '.feature';
       this.config.set(this.props);
       done();
     }.bind(this));
@@ -100,46 +127,26 @@ module.exports = yeoman.generators.Base.extend({
       this.template('README.md');
     },
 
-    config: function () {
-      this.directory('config');
+    wsp: function () {
+      if(this.props.handlerType=='Policy'){
+        /*this.composeWith('akana-policy:build-wsp-settings', {}, {
+          link: 'strong'
+        })
+        this.composeWith('akana-policy:feature-wsp-settings', {}, {
+          link: 'strong'
+        })*/
+        this.composeWith('akana-policy:handler-wsp-settings', {}, {
+          link: 'strong'
+        })
+        this.composeWith('akana-policy:model-wsp-settings', {}, {
+          link: 'strong'
+        })
+      }
     },
 
-    handler: function () {
-      this.composeWith('akana-policy:handler', {}, {
-        link: 'strong'
-      })
-    },
-
-    assertion: function(){
-      this.composeWith('akana-policy:assertion', {}, {
-        link: 'strong'
-      })
-    }, 
-
-    model: function(){
-      this.composeWith('akana-policy:model', {}, {
-        link: 'strong'
-      })
-    },   
-
-    template: function(){
-      this.composeWith('akana-policy:template', {}, {
-        link: 'strong'
-      })
-    },
-
-    build: function () {
-      this.composeWith('akana-policy:build', {}, {
-        link: 'strong'
-      })     
-    },
-
-    meta: function () {
-      this.composeWith('akana-policy:meta', {}, {
-        link: 'strong'
-      })
-    }
- 
+    message: function(){
+      
+    } 
   },
 
   end: function () {

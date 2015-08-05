@@ -1,0 +1,77 @@
+<project name="<%= props.component.toLowerCase() %>-model" default="all">
+
+	<property file="project.properties"/>
+	
+	<property name="bundle.file" value="${dist.dir}/<%=props.modelPackage%>_${bundle.version}.jar"/>
+	
+	<fileset id="third.party.jars" dir="${third.party.dir}">
+		<include name="*.jar"/>
+	</fileset>
+	
+	<fileset id="update.dependent.jars" dir="${lib.dir}">
+		<include name="${gateway.update.dir.name}/*.jar"/>
+	</fileset>
+	
+	<fileset id="base.dependent.jars" dir="${lib.dir}">
+		<include name="${gateway.base.dir.name}/*.jar"/>
+	</fileset>
+	
+	<path id="base.classpath">
+		<fileset refid="update.dependent.jars"/>
+		<fileset refid="base.dependent.jars"/>
+		<fileset refid="third.party.jars"/>
+    </path>	
+	
+	<path id="jaxb.classpath">
+			<fileset dir="${root.dir}/build/lib" includes="jaxb2*.jar, activation.jar, xml_stream_api.jar" />
+	</path>
+
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+		<classpath refid="jaxb.classpath" />
+	</taskdef>
+
+    <target name="all" description="Build it all." depends="bundle"/>
+	
+    <target name="clean" description="clean build artifacts" depends="init">
+        <delete dir="${classes.dir}"/>
+        <delete file="${bundle.file}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+	<target name="generate" description="Generate Manage Headers Java source files">
+		<echo message="Generating Objects..." />
+		<xjc destdir="${generated.dir}" extension="true">
+			<binding dir="${binding.dir}">
+				<include name="policy.xjb"/>
+			</binding>
+			<schema dir="${schema.dir}">
+				<include name="policy.xsd"/>
+			</schema>
+			<produces dir="${generated.dir}">
+				<include name="<%=props.modelPath%>/**/*.*"/>
+			</produces>			
+		</xjc>
+	</target>
+	
+	<target name="compile" depends="init">
+		<echo>Compiling model</echo>
+		<javac source="${source.version}" bootclasspath="${boot.classpath}" destdir="${classes.dir}" debug="${javacdebug}" debuglevel="${debuglevel}" nowarn="${nowarn}" target="${compile.version}">
+  			<src path="${java.dir}"/>
+  			<include name="**/*.java"/>
+  			<classpath>
+  				<path refid="jaxb.classpath"/>
+  			    <path refid="base.classpath"/>
+  		 	</classpath>
+  		</javac>
+	</target>
+	
+	<target name="bundle" depends="compile">
+		<jar destfile="${bundle.file}" manifest="${root.dir}/META-INF/MANIFEST.MF">
+			<fileset dir="${classes.dir}" includes="**/*.class"/>
+		</jar>
+	</target>	
+	
+</project>
