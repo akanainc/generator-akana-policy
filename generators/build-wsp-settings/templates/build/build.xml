@@ -1,0 +1,102 @@
+<project name="policy" default="all">
+	<property file="project.properties"/>
+	<target name="all" description="Build it all." depends="init, bundles, assemble-repository"/>
+		
+    <target name="clean" description="clean build artifacts" 
+    	depends="init, 
+    	model-clean,
+		handler-clean,
+		nd-feature-clean
+    	"/>
+
+	<target name="clean-build" description="clean and then build all">
+		<antcall target="clean"/>
+		<antcall target="all"/>
+	</target>
+	
+	<target name="init">
+		<delete dir="${dist.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+	</target>
+		
+	<target name="bundles" depends="model,
+		handler,
+		nd-feature,
+		consolidate
+	"/>
+
+
+	<path id="tools.classpath">
+		<pathelement location="${classes.dir}"/>
+		<fileset dir="${lib.dir}">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="${third.party.dir}">
+			<include name="*.jar"/>
+		</fileset>
+    </path>	
+	
+	<taskdef name="bindex" classname="org.osgi.impl.bundle.bindex.ant.BindexTask" classpathref="tools.classpath"/>
+
+	<target name="model-clean">
+		<ant dir="${project.dir}/<%= props.modelModule %>/build" antfile="build.xml" inheritall="false" target="clean"/>
+	</target>
+
+	<target name="handler-clean">
+		<ant dir="${project.dir}/<%= props.handlerModule %>/build" antfile="build.xml" inheritall="false" target="clean">
+		</ant>
+	</target>
+
+	<target name="model">
+		<ant dir="${project.dir}/<%= props.modelModule %>/build" antfile="build.xml" inheritall="false" target="all">			
+		</ant>
+	</target>
+
+	<target name="handler">
+		<ant dir="${project.dir}/<%= props.handlerModule %>/build" antfile="build.xml" inheritall="false" target="all">		
+		</ant>
+	</target>
+	
+	
+	<target name="nd-feature-clean">
+		<ant dir="${project.dir}/<%= props.handlerFeature %>/build" antfile="build.xml" inheritall="false" target="clean">
+		</ant>			
+	</target>
+
+	<target name="nd-feature">
+		<ant dir="${project.dir}/<%= props.handlerFeature %>/build" antfile="build.xml" inheritall="false" target="all">
+		</ant>
+	</target>
+
+
+	<target name="consolidate">
+		<copy toDir="${dist.dir}">
+	  		<fileset file="${project.dir}/<%= props.modelModule %>/dist/*.jar" />
+	  		<fileset file="${project.dir}/<%= props.handlerModule %>/dist/*.jar" />
+	  	  	<fileset file="${project.dir}/<%= props.handlerFeature %>/dist/*.jar" />
+		</copy>
+	</target>
+
+	<target name="assemble-repository">
+		<!-- repository -->
+		<bindex repositoryFile="${dist.dir}/repository.xml" 
+        	    quiet="true" 
+        		name="<%= props.title %> Repository"
+        		root="${dist.dir}" 
+        		urlTemplate="%p/%f">
+    		<fileset dir="${dist.dir}">
+    			<include name="*.jar"/>
+    		</fileset>       	
+    	</bindex>
+				
+		<!-- zip -->
+		<zip destfile="${dist.dir}/<%= props.component.toLowerCase() %>-${bundle.version}.zip">
+			<zipfileset dir="${dist.dir}" prefix="lib/<%= props.component.toLowerCase() %>-${bundle.version}">
+				<include name="*.jar"/>
+				<include name="repository.xml"/>
+			</zipfileset>
+		</zip>
+	</target>
+
+	 	
+</project>

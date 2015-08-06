@@ -4,7 +4,7 @@ Bundle-Name: <%= props.title %> Handler
 Bundle-SymbolicName: <%= props.namespace %>
 Bundle-Version: <%=props.bundleVersion%>
 Bundle-Vendor: (<%= props.author %> - <%= props.email %>)
-Import-Package: <%=props.modelPackage%>;version="<%=props.bundleVersion%>"
+Import-Package: <%=props.modelPackage%>;version="<%=props.bundleVersion%>",
  com.digev.fw.exception;version="7.0.0",
  com.digev.fw.log;version="7.0.0",
  com.soa.fw.transform;version="7.0.0",

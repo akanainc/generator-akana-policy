@@ -141,6 +141,9 @@ module.exports = yeoman.generators.Base.extend({
         this.composeWith('akana-policy:model-wsp-settings', {}, {
           link: 'strong'
         })
+        this.composeWith('akana-policy:build-wsp-settings', {}, {
+          link: 'strong'
+        })
       }
     },
 
