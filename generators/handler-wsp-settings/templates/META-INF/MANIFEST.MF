@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: <%= props.title %> Handler
-Bundle-SymbolicName: <%= props.namespace %>
+Bundle-SymbolicName: <%= props.handlerPackage %>
 Bundle-Version: <%=props.bundleVersion%>
 Bundle-Vendor: (<%= props.author %> - <%= props.email %>)
 Import-Package: <%=props.modelPackage%>;version="<%=props.bundleVersion%>",
@@ -38,9 +38,9 @@ Import-Package: <%=props.modelPackage%>;version="<%=props.bundleVersion%>",
  org.w3c.dom,
  org.xml.sax,
  org.bouncycastle.jce.provider
-Export-Package: <%= props.handlerPackage %>,
- <%= props.assertionPackage %>,
- <%= props.marshallerPackage %>,
- <%= props.constantsPackage %>,
- <%= props.templatePackage %>
+Export-Package: <%= props.handlerPackage %>;version="<%=props.bundleVersion%>",
+ <%= props.assertionPackage %>;version="<%=props.bundleVersion%>",
+ <%= props.marshallerPackage %>;version="<%=props.bundleVersion%>",
+ <%= props.constantsPackage %>;version="<%=props.bundleVersion%>",
+ <%= props.templatePackage %>;version="<%=props.bundleVersion%>"
 
