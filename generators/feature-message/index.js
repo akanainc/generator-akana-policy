@@ -13,8 +13,14 @@ module.exports  = yeoman.generators.Base.extend({
   },
 
   writing: function () {
-    this.template('build.xml', path.join('build', 'build.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g });
-    this.template('project.properties', path.join('build', 'project.properties'));
-    this.template('pom.xml', 'pom.xml', null, { 'interpolate': /<%=([\s\S]+?)%>/g});
+    this.template(path.join('build', 'build.xml'), path.join(this.props.handlerFeature, 'build', 'build.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g });
+    this.template(path.join('build', 'project.properties'), path.join(this.props.handlerFeature, 'build', 'project.properties'), null, { 'interpolate': /<%=([\s\S]+?)%>/g});
+    this.template('pom.xml', path.join(this.props.handlerFeature, 'pom.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g});
+    
+    this.template(path.join('META-INF/spring', 'feature.xml'), path.join(this.props.handlerFeature,'META-INF/spring', 'feature.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g });
+    this.template(path.join('META-INF', 'MANIFEST.INF'), path.join(this.props.handlerFeature, 'META-INF', 'MANIFEST.MF'));
+
+
+
   }
 });

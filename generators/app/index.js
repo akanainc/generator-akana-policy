@@ -129,9 +129,6 @@ module.exports = yeoman.generators.Base.extend({
 
     wsp: function () {
       if(this.props.handlerType=='Policy'){
-        /*this.composeWith('akana-policy:build-wsp-settings', {}, {
-          link: 'strong'
-        })*/
         this.composeWith('akana-policy:feature-wsp-settings', {}, {
           link: 'strong'
         })
@@ -148,7 +145,12 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     message: function(){
-      
+        this.composeWith('akana-policy:feature-message', {}, {
+          link: 'strong'
+        })
+        this.composeWith('akana-policy:handler-message', {}, {
+          link: 'strong'
+        })
     } 
   },
 
