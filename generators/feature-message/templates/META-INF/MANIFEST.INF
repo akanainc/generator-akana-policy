@@ -9,7 +9,8 @@ Bundle-Vendor: <%= props.author %> - <%= props.email %>
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ClassPath: .,
  META-INF/resources/
-Require-Bundle: <%=props.handlerPackage%>;bundle-version="<%=props.bundleVersion%>"
+Require-Bundle: <%=props.modelPackage%>;bundle-version="<%=props.bundleVersion%>",
+ <%=props.handlerPackage%>;bundle-version="<%=props.bundleVersion%>"
 Import-Package: com.digev.fw.exception;version="6.0.0",
  com.soa.admin.service.tasks;version="6.0.0",
  com.soa.admin.service.tasks.impl;version="6.0.0",

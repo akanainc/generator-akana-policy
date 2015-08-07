@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: <%= props.title %>
-Bundle-SymbolicName: <%= props.namespace %>
-Bundle-Version: 8.0.0
-Bundle-Vendor: (<%= props.author %> - <%= props.email %>)
+Bundle-SymbolicName: <%= props.handlerPackage %>
+Bundle-Version: <%= props.bundleVersion %>
+Bundle-Vendor: <%= props.author %> - <%= props.email %>
 Import-Package: com.digev.fw.exception;version="7.0.0",
  com.digev.fw.log;version="7.0.0",
  com.soa.fw.transform;version="7.0.0",
@@ -37,4 +37,4 @@ Import-Package: com.digev.fw.exception;version="7.0.0",
  org.w3c.dom,
  org.xml.sax,
  org.bouncycastle.jce.provider
-Export-Package: <%= props.handlerPackage %>
+Export-Package: <%= props.handlerPackage %>;version="<%= props.bundleVersion %>"
