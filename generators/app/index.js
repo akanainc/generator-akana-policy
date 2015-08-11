@@ -145,12 +145,14 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     message: function(){
+      if(this.props.handlerType=='Message'){
         this.composeWith('akana-policy:feature-message', {}, {
           link: 'strong'
         })
         this.composeWith('akana-policy:handler-message', {}, {
           link: 'strong'
         })
+      }
     } 
   },
 
