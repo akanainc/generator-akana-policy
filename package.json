@@ -15,12 +15,12 @@
   },
   "files": [
     "generators/app",
-    "generators/handler",
-    "generators/meta",
-    "generators/build",
-    "generators/model",
-    "generators/assertion",
-    "generators/template"
+    "generators/build-wsp-settings",
+    "generators/feature-message",
+    "generators/feature-wsp-settings",
+    "generators/handler-message",
+    "generators/handler-wsp-settings",
+    "generators/model-wsp-settings"
   ],
   "keywords": [
     "yeoman-generator",
