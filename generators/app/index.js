@@ -7,7 +7,7 @@ var yosay = require('yosay')
   , superheroes  = require('superheroes')
   , path      = require('path');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
   prompting: function () {
     var done = this.async();
 
@@ -69,24 +69,32 @@ module.exports = yeoman.generators.Base.extend({
     },{
       type: 'input',
       name: 'bundleVersion',
-      message: 'Activity Version',
+      message: 'Policy Version',
       default: this.config.get('bundleVersion') || '8.0.0',
       validate: function (input) {
         return input ? true : false;
       }
     },{
       type: 'input',
+      name: 'akanaPlatformVersion',
+      message: 'Akana Platform Release Version',
+      default: this.config.get('akanaPlatformVersion') || '8.1.0',
+      validate: function (input) {
+        return input ? true : false;
+      }
+    },{
+      type: 'input',
       name: 'gatewayBaseVersion',
-      message: 'Gateway Base Version',
-      default: this.config.get('gatewayBaseVersion') || '7.2.0',
+      message: 'API Gateway Release Version',
+      default: this.config.get('gatewayBaseVersion') || '8.0.0',
       validate: function (input) {
         return input ? true : false;
       }
     },{
       type: 'input',
       name: 'gatewayUpdateVersion',
-      message: 'Gateway Cumulative Update Version',
-      default: this.config.get('gatewayUpdateVersion') || '7.2.10',
+      message: 'API Gateway Cumulative Update Version',
+      default: this.config.get('gatewayUpdateVersion') || '8.0.1',
       validate: function (input) {
         return input ? true : false;
       }
@@ -141,6 +149,7 @@ module.exports = yeoman.generators.Base.extend({
         this.composeWith('akana-policy:build-wsp-settings', {}, {
           link: 'strong'
         })
+        this.template('pom-wsp-settings.xml', 'pom.xml', null, { 'interpolate': /<%=([\s\S]+?)%>/g});
       }
     },
 
@@ -152,6 +161,8 @@ module.exports = yeoman.generators.Base.extend({
         this.composeWith('akana-policy:handler-message', {}, {
           link: 'strong'
         })
+        this.template('pom-message.xml', 'pom.xml', null, { 'interpolate': /<%=([\s\S]+?)%>/g});
+
       }
     } 
   },

@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId><%= props.namespace %></groupId>
+  <artifactId><%= props.component %></artifactId>
+  <packaging>pom</packaging>
+  <version><%= props.bundleVersion %></version>
+  <name><%= props.title%></name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <modules>
+      <module><%=props.handlerModule%></module>
+      <module><%=props.modelModule%></module>
+      <module><%=props.handlerFeature%></module>
+      <module>build</module>
+  </modules>
+
+
+  <build>
+    <directory>target</directory>
+    <outputDirectory>target/classes</outputDirectory>
+    <finalName>${project.artifactId}_${project.version}</finalName>
+    <testOutputDirectory>target/test-classes</testOutputDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+  </build>
+
+  <pluginRepositories>
+      <pluginRepository>
+        <id>central</id>
+        <name>Maven Plugin Repository</name>
+        <url>http://repo1.maven.org/maven2</url>
+        <layout>default</layout>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+        <releases>
+          <updatePolicy>never</updatePolicy>
+        </releases>
+      </pluginRepository>
+    </pluginRepositories>
+
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Maven Repository Switchboard</name>
+      <layout>default</layout>
+      <url>http://repo1.maven.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+      <repository>
+          <id>org.springframework.repository.maven</id>
+          <name>SpringSource Maven Repository</name>
+          <url>http://repository.springframework.org/maven/</url>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+      </repository>
+  </repositories>
+
+</project>

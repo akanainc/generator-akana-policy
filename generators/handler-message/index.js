@@ -3,7 +3,7 @@
 var path   = require('path')
   , yeoman = require('yeoman-generator');
 
-var HandlerGenerator = yeoman.generators.Base.extend({
+var HandlerGenerator = yeoman.Base.extend({
 
   constructor: function(){
     yeoman.generators.Base.apply(this, arguments);
@@ -23,6 +23,7 @@ var HandlerGenerator = yeoman.generators.Base.extend({
     
     this.template(path.join('OSGI-INF', 'handler-osgi.xml'), path.join(this.props.handlerModule, 'META-INF/spring', 'handler-osgi.xml'));
     this.template(path.join('META-INF', 'MANIFEST.MF'), path.join(this.props.handlerModule, 'META-INF', 'MANIFEST.MF'));
+    this.template('pom.xml', path.join(this.props.handlerModule, 'pom.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g});
 
     this.template(path.join('build', 'build.xml'), path.join(this.props.handlerModule, 'build', 'build.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g });
     this.template(path.join('build', 'project.properties'), path.join(this.props.handlerModule, 'build', 'project.properties'), null, { 'interpolate': /<%=([\s\S]+?)%>/g});

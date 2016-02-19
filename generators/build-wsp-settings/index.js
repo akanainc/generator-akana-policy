@@ -5,7 +5,7 @@ var path   = require('path'),
     yeoman = require('yeoman-generator');
 
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
 
 
   initializing: function () {

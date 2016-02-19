@@ -12,9 +12,9 @@
 		<include name="*.jar"/>
 	</fileset>
 
-	<fileset id="update.dependent.jars" dir="${lib.dir}">
+	<!--fileset id="update.dependent.jars" dir="${lib.dir}">
 		<include name="${gateway.update.dir.name}/*.jar"/>
-	</fileset>
+	</fileset-->
 	
 	<fileset id="base.dependent.jars" dir="${lib.dir}">
 		<include name="${gateway.base.dir.name}/*.jar"/>
@@ -22,7 +22,7 @@
 	
 	<path id="base.classpath">
 		<fileset refid="model.jars"/>
-		<fileset refid="update.dependent.jars"/>
+		<!--fileset refid="update.dependent.jars"/-->
 		<fileset refid="base.dependent.jars"/>
 		<fileset refid="third.party.jars"/>
     </path>	

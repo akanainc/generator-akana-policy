@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId><%= props.namespace %></groupId>
+        <artifactId><%= props.component %></artifactId>
+        <version><%= props.bundleVersion %></version>
+    </parent>
+    <artifactId><%=props.modelModule%></artifactId>
+    <packaging>jar</packaging>
+   
+    <build>
+        <directory>target</directory>
+        <outputDirectory>target/classes</outputDirectory>
+        <finalName>${project.artifactId}_${project.version}</finalName>
+        <testOutputDirectory>target/test-classes</testOutputDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+          <resource>
+            <directory>src/main/resources</directory>
+          </resource>
+        </resources>
+        <testResources>
+          <testResource>
+            <directory>src/test/resources</directory>
+          </testResource>
+        </testResources>
+      <!--plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.8</version>
+          <executions>
+            <execution>
+              <id>clean</id>
+              <phase>clean</phase>
+              <configuration>
+                <target name="clean"> <ant antfile="build/build.xml" useNativeBasedir="true"/></target>
+              </configuration>
+              <goals>
+                <goal>run</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>compile</id>
+              <phase>compile</phase>
+              <configuration>
+                <target name="compile"> <ant antfile="build/build.xml" useNativeBasedir="true"/></target>
+              </configuration>
+              <goals>
+                <goal>run</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>package</id>
+              <phase>package</phase>
+              <configuration>
+                <target name="bundle"> <ant antfile="build/build.xml" useNativeBasedir="true"/></target>
+              </configuration>
+              <goals>
+                <goal>run</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins-->
+   </build>
+</project>

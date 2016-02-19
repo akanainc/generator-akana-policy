@@ -3,7 +3,7 @@
 var path   = require('path')
   , yeoman = require('yeoman-generator');
 
-var HandlerGenerator = yeoman.generators.Base.extend({
+var HandlerGenerator = yeoman.Base.extend({
 
   constructor: function(){
     yeoman.generators.Base.apply(this, arguments);
@@ -26,6 +26,7 @@ var HandlerGenerator = yeoman.generators.Base.extend({
     this.template(path.join('src/main/java', 'WSPHandlerFactory.java'), path.join(this.props.handlerModule, 'src/main/java', handlerPath, this.props.component + 'WSPHandlerFactory.java'));
     this.template(path.join('src/main/java', 'Constants.java'), path.join(this.props.handlerModule, 'src/main/java', constantsPath, this.props.component + 'Constants.java'));
     this.template(path.join('src/main/java', 'WSPMessageHandler.java'), path.join(this.props.handlerModule, 'src/main/java', handlerPath, this.props.component + 'MessageHandler.java'));
+    this.template('pom.xml', path.join(this.props.handlerModule, 'pom.xml'), null, { 'interpolate': /<%=([\s\S]+?)%>/g});
 
     this.template(path.join('OSGI-INF', 'handler-osgi.xml'), path.join(this.props.handlerModule, 'META-INF/spring', 'handler-osgi.xml'));
     this.template(path.join('META-INF', 'MANIFEST.MF'), path.join(this.props.handlerModule, 'META-INF', 'MANIFEST.MF'));
