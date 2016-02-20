@@ -16,6 +16,10 @@
 		<include name="${gateway.update.dir.name}/*.jar"/>
 	</fileset-->
 	
+	<!--fileset id="bundle.jars" dir="${bundle.lib.dir}">
+		<include name="*.jar"/>
+	</fileset-->
+
 	<fileset id="base.dependent.jars" dir="${lib.dir}">
 		<include name="${gateway.base.dir.name}/*.jar"/>
 	</fileset>
@@ -56,6 +60,7 @@
 		<jar destfile="${bundle.file}" manifest="${root.dir}/META-INF/MANIFEST.MF">
 			<fileset dir="${classes.dir}" includes="**/*.class"/>
 			<zipfileset dir="${spring.dir}" includes="*.*" prefix="META-INF/spring"/>
+			<!--zipfileset refid="bundle.jars" prefix="lib"/-->
 		</jar>
 	</target>	
 	

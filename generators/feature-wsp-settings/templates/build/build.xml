@@ -2,7 +2,7 @@
 	
 	<property file="project.properties"/>
 	
-	<property name="bundle.file" value="${dist.dir}/com.akana.policy.demo.handler.feature_${bundle.version}.jar"/>
+	<property name="bundle.file" value="${dist.dir}/<%=props.handlerFeature%>_${bundle.version}.jar"/>
 		
     <target name="all" description="Build it all." depends="bundle"/>
 	

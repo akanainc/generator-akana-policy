@@ -98,5 +98,13 @@
 		</zip>
 	</target>
 
+	<target name="deploy" depends="init, bundles, assemble-repository">
+		<copy todir="${deploy.dir}" flatten="true">
+			<fileset dir="${dist.dir}">
+				<include name="*.jar"/>
+				<exclude name="<%= props.handlerFeature%>_${bundle.version}.jar" />
+			</fileset>
+		</copy>
+	</target>
 	 	
 </project>
